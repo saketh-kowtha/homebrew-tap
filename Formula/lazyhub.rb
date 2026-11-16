@@ -1,9 +1,9 @@
 class Lazyhub < Formula
-  desc "Lazygit-style GitHub TUI — keyboard-driven terminal UI for GitHub"
+  desc "Lazygit-style GitHub TUI - keyboard-driven terminal UI for GitHub"
   homepage "https://github.com/saketh-kowtha/lazyhub"
-  url "https://registry.npmjs.org/lazyhub/-/lazyhub-26.5.4.tgz"
-  sha256 "669dea9d2f02fb48e837514fc0d7a6762307a6be15c56facb67d84db28337d3e"
-  version "26.5.4"
+  url "https://registry.npmjs.org/lazyhub/-/lazyhub-26.6.3.tgz"
+  sha256 "4a9c45f9e49abbb22a1705c3bd48288d362cb0e425081a8b57752fc62cafd3e9"
+  version "26.6.3"
   license "MIT"
 
   depends_on "node"
@@ -14,6 +14,7 @@ class Lazyhub < Formula
   end
 
   test do
-    assert_match "lazyhub", shell_output("#{bin}/lazyhub --version 2>&1", 1)
+    # --version prints the package version and exits 0 (#472, #514).
+    assert_match version.to_s, shell_output("#{bin}/lazyhub --version")
   end
 end
